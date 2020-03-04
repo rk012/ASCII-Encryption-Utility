@@ -32,16 +32,17 @@ def main():
     message = input()
     print("Enter seed")
     seed = input()
-    print("Encrypted message:"+encrypt(seed, message)+"\n\n")
+    print("Encrypted message:\n"+encrypt(seed, message)+"\n\n")
     main()
   elif(choice == "2"):
     print("Enter message to be decrypted:")
     encryptedmessage = input()
     print("Enter seed")
     seed = input()
-    print("Decrypted message:"+decrypt(seed, encryptedmessage)+"\n\n")
+    print("Decrypted message:\n"+decrypt(seed, encryptedmessage)+"\n\n")
     main()
   else:
+    print(choice)
     print("invalid choice\n\n")
     main()
 
