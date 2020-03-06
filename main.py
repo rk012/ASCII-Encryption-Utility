@@ -1,21 +1,4 @@
-import random
-
-def encrypt(seed, message):
-  random.seed(seed)
-  encryptedmessage=""
-  for i in range(0, len(message)):
-    encryptedmessage = encryptedmessage+chr((((ord(message[i])-32)+random.randint(0, 95))%96)+32)
-
-  return encryptedmessage
-
-def decrypt(seed, encryptedmessage):
-  random.seed(seed)
-  message=""
-
-  for i in range(0, len(encryptedmessage)):
-    message = message+chr((((ord(encryptedmessage[i])-32)-random.randint(0, 95))%96)+32)
-
-  return message
+from ascii_encryptor import *
 
 def main():
   print("ASCII Encryption Utility\n")
