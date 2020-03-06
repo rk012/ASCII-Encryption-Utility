@@ -1,33 +1,42 @@
-from ascii_encryptor import *
+from ascii_encryptor import encrypt, decrypt
+from symmetric_encryption_util import PUBLIC_KEY, key_gen
+
+SHARED_KEY = ""
+
+def setup():
+    global SHARED_KEY
+    print("ASCII Encryption Utility\n")
+    print("Send your public key to recipient:")
+    print(PUBLIC_KEY)
+    print("\nEnter recipient's public key:")
+    SHARED_KEY = key_gen(input())
+    print("\nSetup Complete")
 
 def main():
-  print("ASCII Encryption Utility\n")
-  print("0. Exit")
-  print("1. Encrypt text")
-  print("2. Decrypt text\n")
-  print("Please select an option:")
-  choice = input()
+    global SHARED_KEY
+    print("\n\n")
+    print("0. Exit")
+    print("1. Encrypt message")
+    print("2. Decrypt message\n")
+    print("Choose an option:")
+    choice = input()
+    if choice == "0":
+        pass
+    elif choice == "1":
+        print("Enter message to be encrypted:")
+        encryptedmessage=encrypt(SHARED_KEY, input())
+        print("Encrypted message:")
+        print(encryptedmessage)
+        main()
+    elif choice == "2":
+        print("Enter message to be decrypted:")
+        decryptedmessage=decrypt(SHARED_KEY, input())
+        print("Decrypted message:")
+        print(decryptedmessage)
+        main()
+    else:
+        print("Invalid choice")
+        main()
 
-  if(choice == "0"):
-    pass
-  elif(choice == "1"):
-    print("Enter message to be encrypted:")
-    message = input()
-    print("Enter seed")
-    seed = input()
-    print("Encrypted message:\n"+encrypt(seed, message)+"\n\n")
-    main()
-  elif(choice == "2"):
-    print("Enter message to be decrypted:")
-    encryptedmessage = input()
-    print("Enter seed")
-    seed = input()
-    print("Decrypted message:\n"+decrypt(seed, encryptedmessage)+"\n\n")
-    main()
-  else:
-    print(choice)
-    print("invalid choice\n\n")
-    main()
-
-
+setup()
 main()
