@@ -1,9 +1,8 @@
-from primes import PRIMES
 import random
 
 GENERATOR=3
-MODULUS=PRIMES[356]
-PRIVATE_KEY=random.randint(1, 1000)
+MODULUS=15485863
+PRIVATE_KEY=random.randint(1, 1000000)
 
 PUBLIC_KEY=(GENERATOR**PRIVATE_KEY)%MODULUS
 
